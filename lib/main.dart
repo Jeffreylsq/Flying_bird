@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Fly bird'),
+      home: SplashScreen(),
     );
   }
 }
@@ -60,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
   double gapThreeCenter = 0.3;
   Direction birdDirection = Direction.Down;
   int score = 0;
-  int maxScore = 5;
+  int maxScore = 3;
   double time = 0;
 
   void initGameState(bool isGameOver) {
@@ -230,6 +230,35 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
 }
+
+class SplashScreen extends StatefulWidget {
+
+  @override
+  _SplashScreenState createState() => _SplashScreenState();
+}
+  class _SplashScreenState extends State<SplashScreen> {
+
+  @override
+  void initState() {
+    super.initState();
+    Timer(Duration(seconds: 4),(){
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_)=> MyHomePage(title: "Flying Bird",)));
+    });
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.black,
+        body: Center(
+
+              child:Image.asset("assets/images/logo.png", height: 150,),
+
+        )
+    );
+  }
+
+}
+
 
 
 
